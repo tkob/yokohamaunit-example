@@ -1,2 +1,9 @@
 # yokohamaunit-example
-An example project of YokohamaUnit &lt;https://github.com/tkob/yokohamaunit>
+
+This ia an example project of [YokohamaUnit](https://github.com/tkob/yokohamaunit)
+
+## Build
+
+```
+./gradlew check
+```
