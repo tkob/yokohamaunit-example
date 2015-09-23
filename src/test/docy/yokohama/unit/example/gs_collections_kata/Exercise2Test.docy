@@ -1,0 +1,37 @@
+*[Domain]: yokohama.unit.example.gs_collections_kata.Domain
+*[Predicate]: com.gs.collections.api.block.predicate.Predicate
+
+# Test: Do any customers come from London?
+
+Assert that `customers.anySatisfy{it.city == "London"}` is true
+where customers = `Domain.company.customers`.
+
+# Test: Do all customers come from London?
+
+Assert that `customers.allSatisfy{it.city == "London"}` is false
+where customers = `Domain.company.customers`.
+
+# Test: How many customers come from London?
+## Setup
+Let customers = `Domain.company.customers`.
+
+Let fromLondon = `{it -> it.city == "London"} as Predicate`.
+
+## Verify
+Assert that `customers.count(fromLondon)` is 2.
+
+# Test: Which customers come from London?
+
+Assert that `customers.select{it.city == "London"}.size()` is 2
+where customers = `Domain.company.customers`.
+
+# Test: Which customers do not come from London?
+Assert that `customers.reject{it.city == "London"}.size()` is 1
+where customers = `Domain.company.customers`.
+
+# Test: Which customers come from London? Which customers do not come from London?
+
+Assert `customers.select{it.city == "London"}.size()` is 2
+and `customers.reject{it.city == "London"}.size()` is 1
+where customers = `Domain.company.customers`.
+

@@ -1,0 +1,28 @@
+*[Domain]: yokohama.unit.example.gs_collections_kata.Domain
+*[MutableSet]: com.gs.collections.api.set.MutableSet
+*[MutableList]: com.gs.collections.api.list.MutableList
+*[Function]: com.gs.collections.api.block.function.Function
+*[FastList]: com.gs.collections.impl.list.mutable.FastList
+*[RichIterable]: com.gs.collections.api.RichIterable
+
+# Test: Get all items that have been ordered by anybody.
+## Setup
+
+Let company = `Domain.company`.
+
+Let allOrderedLineItems = `company.orders.flatCollect{it.lineItems}`.
+
+Let actualItemNames = an invocation of `MutableList.toSet()` on
+    `allOrderedLineItems.collect({it.name} as Function)`.
+
+Let expectedItemNames = `[ "shed", "big shed", "bowl", "cat", "cup", "chair",
+    "dog", "goldfish", "gnome", "saucer", "sofa", "table" ] as Set`.
+
+## Verify
+
+Assert that `actualItemNames` is an instance of `MutableSet`.
+
+Assert that `actualItemNames.first` is an instance of `String`.
+
+Assert that `actualItemNames` is `expectedItemNames`.
+

@@ -1,0 +1,72 @@
+*[ArrayIterate]: com.gs.collections.impl.utility.ArrayIterate
+*[Domain]: yokohama.unit.example.gs_collections_kata.Domain
+*[ListIterate]: com.gs.collections.impl.utility.ListIterate
+*[Function]: com.gs.collections.api.block.function.Function
+*[Predicate]: com.gs.collections.api.block.predicate.Predicate
+
+# Test: Find supplier names.
+## Setup
+Let company = `Domain.company`.
+
+Let supplierNames = `ArrayIterate.collect(company.getSuppliers(), {it.name})`.
+
+Let expectedSupplierNames = `[ "Shedtastic", "Splendid Crocks",
+    "Annoying Pets", "Gnomes 'R' Us", "Furniture Hamlet", "SFD", "Doxins" ]`.
+
+## Verify
+Assert that `supplierNames` is `expectedSupplierNames`.
+
+# Test: Find the number of suppliers that supply more than 2 items.
+
+## Setup
+Let company = `Domain.company`.
+
+Let moreThanTwoItems = `{supplier -> supplier.itemNames.length > 2}`.
+
+Let suppliersWithMoreThanTwoItems =
+    `ArrayIterate.count(company.suppliers, moreThanTwoItems)`.
+
+## Verify
+Assert that `suppliersWithMoreThanTwoItems` is 5.
+
+# Test: Who supplies sandwich toaster?
+
+## Setup
+Let company = `Domain.company`.
+
+Let suppliesToaster =
+    `{sp -> ArrayIterate.contains(sp.itemNames, "sandwich toaster")}`.
+
+Let toasterSupplier = `ArrayIterate.detect(company.suppliers, suppliesToaster)`.
+
+## Verify
+Assert that `toasterSupplier` is not null.
+
+Assert that `toasterSupplier.name` is "Doxins".
+
+# Test: Get the order values that are greater than 1.5.
+
+## Setup
+Let company = `Domain.company`.
+
+Let orders = `company.mostRecentCustomer.orders`.
+
+Let orderValues = `ListIterate.collect(orders, {it.value})`.
+
+Let filtered = `orderValues.select({it > 1.5} as Predicate)`.
+
+## Verify
+Assert that `filtered` is `[372.5d, 1.75d]`.
+
+# Test: Get the actual orders (not their double values) where those orders have a value greater than 2.0.
+
+# Setup
+Let company = `Domain.company`.
+
+Let orders = `company.mostRecentCustomer.orders`.
+
+Let filtered = `ListIterate.select(orders, {order -> order.value > 2.0})`.
+
+# Verify
+Assert `filtered` is `[company.mostRecentCustomer.orders[0]]`.
+

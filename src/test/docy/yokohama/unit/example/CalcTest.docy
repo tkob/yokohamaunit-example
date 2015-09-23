@@ -1,0 +1,8 @@
+# Test: Division by zero
+
+Assert that
+       `calc.div(1,  1)` throws nothing
+   and `calc.div(1, -1)` throws nothing
+   and `calc.div(1,  0)` throws an instance e of `IllegalArgumentException`
+                         such that `e.message` is `"div by zero"`
+where calc = `new yokohama.unit.example.Calc()`.

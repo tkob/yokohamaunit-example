@@ -1,0 +1,27 @@
+*[Domain]: yokohama.unit.example.gs_collections_kata.Domain
+*[Function]: com.gs.collections.api.block.function.Function
+
+# Test: Get the name of each of the company's customers.
+## Setup
+Let customers = `Domain.company.customers`.
+
+Let nameFunction = `{it -> it.name} as Function`.
+
+## Verify
+Assert that `customers.collect(nameFunction)` is `["Fred", "Mary", "Bill"]`.
+
+# Test: Get the city for each of the company's customers.
+
+## Setup
+Let customers = `Domain.company.customers`.
+
+Let cityFunction = `{it -> it.city} as Function`.
+
+## Verify
+Assert that `customers.collect(cityFunction)` is `["London", "Liphook", "London"]`.
+
+# Test: Which customers come from London? Get a collection of those which do.
+
+Assert that `customers.select{it.city == "London"}.size()` is `2`
+where customers = `Domain.company.customers`.
+

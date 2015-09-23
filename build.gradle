@@ -1,0 +1,48 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        jcenter()
+        maven { url 'https://dl.bintray.com/tkob/maven' }
+    }
+    dependencies {
+        classpath 'yokohama.unit:yokohamaunit:0.1.0'
+    }
+}
+
+apply plugin: 'java'
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+    compile 'com.goldmansachs:gs-collections:6.1.0'
+    testCompile group: 'org.mockito', name: 'mockito-core', version: '1.10.8'
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+    testCompile group: 'org.codehaus.groovy', name: 'groovy-all', version: '2.3.7'
+}
+
+task compileDocy << {
+    ext.classpath = configurations.testCompile.join(File.pathSeparator) +
+                    File.pathSeparator + sourceSets.main.output.classesDir +
+                    File.pathSeparator + sourceSets.test.output.classesDir
+    ext.classesDir = sourceSets.test.output.classesDir
+    ext.baseDir = "$projectDir/src/test/docy"
+    ext.sourceSet = fileTree(dir: ext.baseDir, include: '**/*.docy')
+    ext.args = [
+        'docyc',
+        '-cp', ext.classpath,
+        '-d', ext.classesDir,
+        '-basedir', ext.baseDir
+        ]
+    ext.args += ext.sourceSet.getFiles()
+
+    if (!ext.classesDir.exists()) {
+        ext.classesDir.mkdirs()
+    }
+    def main = new yokohama.unit.Main(new yokohama.unit.CommandFactory());
+    main.run(System.in, System.out, System.err, ext.args as String[])
+}
+compileDocy.dependsOn compileTestJava
+test.dependsOn compileDocy

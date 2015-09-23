@@ -1,0 +1,26 @@
+*[FizzBuzz]: yokohama.unit.example.FizzBuzz
+
+# Test: FizzBuzz test variations
+
+Assert that `new FizzBuzz().generate(16)` is
+`[ "1", "2", "Fizz", "4", "Buzz", "Fizz", "7", "8",
+   "Fizz", "Buzz", "11", "Fizz", "13", "14", "FizzBuzz", "16" ]`.
+
+Assert `fizzbuzz.size()`  is `16`
+   and `fizzbuzz.get(0)`  is `"1"`
+   and `fizzbuzz.get(1)`  is `"2"`
+   and `fizzbuzz.get(2)`  is `"Fizz"`
+   and `fizzbuzz.get(3)`  is `"4"`
+   and `fizzbuzz.get(4)`  is `"Buzz"`
+   and `fizzbuzz.get(5)`  is `"Fizz"`
+   and `fizzbuzz.get(6)`  is `"7"`
+   and `fizzbuzz.get(7)`  is `"8"`
+   and `fizzbuzz.get(8)`  is `"Fizz"`
+   and `fizzbuzz.get(9)`  is `"Buzz"`
+   and `fizzbuzz.get(10)` is `"11"`
+   and `fizzbuzz.get(11)` is `"Fizz"`
+   and `fizzbuzz.get(12)` is `"13"`
+   and `fizzbuzz.get(13)` is `"14"`
+   and `fizzbuzz.get(14)` is `"FizzBuzz"`
+   and `fizzbuzz.get(15)` is `"16"`
+where fizzbuzz is `new FizzBuzz().generate(16)`.

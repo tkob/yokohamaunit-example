@@ -1,0 +1,9 @@
+# Test: Test for Counter class
+
+## Setup: Create a counter whose value is 1.
+Let counter be `new yokohama.unit.example.Counter()`.
+
+Do `counter.increment()`.
+
+## Verify
+Assert that `counter.increment()` is 2.
